@@ -1,0 +1,100 @@
+﻿<Window x:Class="Office.ContactsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="Window_Loaded_1"
+        WindowStartupLocation="CenterScreen"
+        Icon="Sources/Icon.ico"
+        Title="جهات الاتصال" Height="600"    Width="800" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+           
+            <Label Content="الاسم" Margin="-10,10,10,-10" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13" />
+        <TextBox x:Name="nameTxtr" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+            <Label Content="جوال" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,140,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="mobileTxt" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,140,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="العنوان" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,265,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="addressTxt" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,265,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="البريد الالكتروني" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,265,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="emailTxt" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,265,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="الصفة" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,10,0" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13"/>
+            <TextBox x:Name="websiteText" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="هاتف" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,139,0" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="phoneText" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,140,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Button Content="اضف" HorizontalAlignment="Right" Margin="0,135,10,0" VerticalAlignment="Top" Width="375" Height="23" FontFamily="Calibri" FontSize="13" Click="Button_Click_1"/>
+            <Label Cursor="Hand" MouseLeftButtonDown="Label_MouseLeftButtonDown_2" Content="بحث" HorizontalAlignment="Right" Margin="0,153,10,0" VerticalAlignment="Top" Foreground="#FF2E6187" FontSize="15" FontFamily="Calibri"/>
+
+
+
+        </Grid>
+        <Grid Name="searchGrid" Height="0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0">
+
+            <Label Content="الاسم" Margin="-10,10,10,-10" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="nameTxtrFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+
+            <Label Content="جوال" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,140,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="mobileTxtFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,140,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+            <Label Content="العنوان" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,265,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="addressTxtFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,41,265,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+            <Label Content="البريد الالكتروني" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,265,0" HorizontalContentAlignment="Right" FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="emailTxtFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,265,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+            <Label Content="الصفة" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,10,0" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13"/>
+            <TextBox x:Name="websiteTextFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+            <Label Content="هاتف" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,76,139,0" HorizontalContentAlignment="Right"  FontFamily="Calibri" FontSize="13" />
+            <TextBox x:Name="phoneTextFilter" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="23" Margin="0,107,140,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="filter_Changed"/>
+
+
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <DataGrid AlternationCount="2" Name="contactGrid" HorizontalAlignment="Stretch" IsReadOnly="True" AutoGenerateColumns="False"  Margin="10" VerticalAlignment="Stretch"  SelectionMode="Single" FontFamily="Calibri" FontSize="13" >
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyle">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                    <Style TargetType="TextBlock" x:Key="dataGridElementStyle">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="البريد الالكتروني" Width="100" Binding="{Binding email}" HeaderStyle="{StaticResource HeaderStyle}"  ElementStyle="{StaticResource dataGridElementStyle}"/>
+                    <DataGridTextColumn  Binding="{Binding id}"   Visibility="Hidden" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"  />
+                    <DataGridTextColumn  Binding="{Binding website}"    Header="الصفة" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"  />
+                    <DataGridTextColumn  Binding="{Binding address}"    Header="العنوان" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"  />
+
+                    <DataGridTextColumn  Binding="{Binding phone}"    Header="الهاتف" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"   />
+                    <DataGridTextColumn  Binding="{Binding mobile}"    Header="الجوال" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"  />
+                    <DataGridTextColumn  Binding="{Binding name}"    Header="الاسم" Width="100" HeaderStyle="{StaticResource HeaderStyle}"   ElementStyle="{StaticResource dataGridElementStyle}"  />
+
+
+
+
+
+
+
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#FFE8E0E0" />
+                            </Trigger>
+                        </Style.Triggers>
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+
+            </DataGrid>
+        </Grid>
+
+    </Grid>
+</Window>
